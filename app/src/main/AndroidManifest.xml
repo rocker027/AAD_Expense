@@ -18,10 +18,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AddActivity"></activity>\
+        <activity android:name=".AddActivity" />
+        \
         <provider
-            android:authorities="com.example.rocker.aad_expense"
-            android:name=".ExpenseProvider" />
+            android:name=".ExpenseProvider"
+            android:authorities="com.example.rocker.aad_expense" />
+
+        <activity android:name=".DetailActivity"></activity>
     </application>
 
 </manifest>

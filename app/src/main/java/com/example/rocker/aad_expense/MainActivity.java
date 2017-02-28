@@ -18,7 +18,7 @@ import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
-public class MainActivity extends AppCompatActivity implements ExpenseAdapter.OnRecyclerViewItemClickListener{
+public class MainActivity extends AppCompatActivity implements ExpenseAdapter.OnRecyclerViewItemClickListener {
 
     private ExpenseHelper helper;
     private ListView listView;
@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity implements ExpenseAdapter.On
     private void onLoadToQuery() {
         Cursor cursor = getContentResolver().query(ExpenseCommon.Constant.CONTENT_URI, null, null, null, null);
         ExpenseAdapter adapter = new ExpenseAdapter(cursor);
+        // 初始化RecyclerViewItemClickListener 傳送 RecyclerViewItemClickListener 到 ExpenseAdapter
         adapter.setOnRecyclerViewItemClickListener(this);
         recycler.setAdapter(adapter);
 
@@ -107,6 +108,8 @@ public class MainActivity extends AppCompatActivity implements ExpenseAdapter.On
     @Override
     public void onItemClick(View view, Expense expense) {
         Log.d(TAG, "Click id" + expense.getId());
-
+        Intent intent = new Intent(this, DetailActivity.class);
+        intent.putExtra("Exp", expense);
+        startActivity(intent);
     }
 }
